@@ -23,6 +23,11 @@ curl http://localhost:8110/
 curl http://localhost:8110/status
 ```
 
+Run killer-script (loads more RPS than app can handle)
+```
+pipenv run python killer.py
+```
+
 ## Using Docker
 
 Install Docker (using official docs). 
