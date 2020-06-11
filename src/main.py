@@ -11,6 +11,8 @@ from flask import request
 from flask import current_app
 import requests
 
+from src.hack import apply_gevent_hack_py3
+
 
 class BackgroundWorker(threading.Thread):
 
@@ -37,6 +39,8 @@ class BackgroundWorker(threading.Thread):
 
 app = Flask(__name__)
 app.debug = True
+# Same place...
+apply_gevent_hack_py3(0.05)
 
 BackgroundWorker(_app=app).start()
 
