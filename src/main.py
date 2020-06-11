@@ -9,6 +9,7 @@ import time
 from flask import Flask
 from flask import request
 from flask import current_app
+import requests
 
 
 class BackgroundWorker(threading.Thread):
@@ -22,12 +23,16 @@ class BackgroundWorker(threading.Thread):
 
     def run(self):
         while True:
-            self.counter += 1
+            # Add big http-request with slow json-parsing
+            r = requests.get('https://gist.githubusercontent.com/d3QUone/1785ec792c720df2477d47180fc629e2/raw/a1c446274dc43a6a6f77ad86746d5008291e5062/big.json')
+            data = r.json()
 
             with self._app.app_context():
+                current_app.last_status = r.status_code
+                self.counter += 1
                 current_app.mega_counter = self.counter
 
-            time.sleep(5)
+            time.sleep(1)
 
 
 app = Flask(__name__)
@@ -48,5 +53,4 @@ def index_view():
 @app.route('/status')
 def status_view():
     counter = getattr(current_app, 'mega_counter', None)
-    time.sleep(0.5)
     return 'counter = {}'.format(counter)
