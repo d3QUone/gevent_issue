@@ -41,6 +41,6 @@ Two blocking issues:
 
 https://github.com/gevent/gevent/issues/1437
 
-2) uwsgi can't run new gevent (with possible fix):
+2) uwsgi can't run new gevent > 1.4.0 (with possible fix):
 
 https://github.com/unbit/uwsgi/issues/2177

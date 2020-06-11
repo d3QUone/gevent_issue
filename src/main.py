@@ -1,6 +1,6 @@
 # Step 1 - patch
-#from gevent import monkey
-#monkey.patch_all(thread=False)
+from gevent import monkey
+monkey.patch_all(thread=False)
 
 # Step 2 - import all
 import threading
@@ -41,10 +41,12 @@ def index_view():
     x = request.args.get('x', type=str)
     if not x:
         x = 'unknown'
+    time.sleep(0.5)
     return 'Hello, World!\nx={}'.format(x)
 
 
 @app.route('/status')
 def status_view():
     counter = getattr(current_app, 'mega_counter', None)
+    time.sleep(0.5)
     return 'counter = {}'.format(counter)
