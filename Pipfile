@@ -6,7 +6,8 @@ name = "pypi"
 [packages]
 flask = "==1.1.2"
 uwsgi = "==2.0.18"
-gevent = "==20.6.1"
+gevent = "==1.4.0"
+requests = "*"
 
 [requires]
 python_version = "3.8.3"
