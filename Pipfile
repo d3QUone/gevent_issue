@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "==1.1.2"
+flask = "==2.3.2"
 uwsgi = "==2.0.18"
 gevent = "==1.4.0"
 requests = "*"
